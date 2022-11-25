@@ -1,0 +1,286 @@
+@using NewsApp.Services
+@inject IWeatherService _weatherService
+@{
+    var weatherData = _weatherService.WeatherApp().Result;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - NewsApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/PagedList.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/NewsApp.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head>
+
+
+<body>
+
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom box-shadow mb-1">
+            <div class="container-fluid">
+                <div>
+                    <a style="font-weight: bold; text-shadow: 2px 2px #808080;color: white; font-size:30px" class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+                        <img height="50" width="50" src="~/image/news 5.jpg" />
+                        <span class="d-none d-sm-inline">News Five</span>
+                    </a>
+                    <img id="wicon" class="mr-3" alt="Sample Image" style="width:50px;" data-bs-toggle="popover" data-bs-placement="bottom">
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav-1" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="nav-1">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+
+
+        </nav>
+
+
+        <!-- second navbar -->
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-dark" id="navigation" role="navigation" aria-label="Fourth navbar example" style="font-family:'Times New Roman', Times, serif; font-weight:bold;margin-bottom:30px; background-color:darkred">
+                <div class="container-fluid">
+                    <a class="navbar-link navbar-brand text-warning text-uppercase" asp-controller="Article" a style="font-size:22px;text-shadow: 1px 1px" asp-action="Index">News </a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" style="color: white" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="World"><i class="fas fa-globe-americas">&nbsp;<span style="font-family:'Times New Roman', Times, serif">World</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Sweden"><i class="fas fa-flag">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Sweden</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Art"><i class=" fas fa-paint-brush">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Art</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Sports"><i class="fas fa-basketball-ball">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Sports</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Health"><i class="fas fa-heartbeat">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Health</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Business"><i class="fas fa-money-check-alt">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Business</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li">
+                                <a class="nav-link nav-a" asp-controller="Home" asp-action="Index" asp-route-categoryName="Culture"><i class="fas fa-users">&nbsp;<span style="font-family:'Times New Roman', Times, serif">Culture</span></i></a>
+                            </li>
+                            <li class="nav-item nav-li dropdown position-static">
+                                <a class="nav-link nav-a dropdown-toggle position-relative text-warning" style="font-size:18px" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    More
+                                </a>
+                                <!-- Dropdown menu -->
+
+                                <div class="dropdown-menu w-100 mt-0" id="navigation" role="navigation" aria-labelledby="navbarDropdown" style=" border-top-left-radius: 0; border-top-right-radius: 0;  background-color:darkred">
+                                    <div class="container">
+                                        <div class="row my-4">
+
+                                            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                                                <div class="list-group list-group-flush">
+
+                                                    <a style="color: white; text-decoration: none" asp-controller="Home" asp-action="Index" asp-route-categoryName="Tech"><i class="fas fa-tools">&nbsp;<span style="font-family:'Times New Roman', Times, serif">TECH</span></i></a>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-3 mb-3 mb-lg-0">
+                                                <div class="list-group list-group-flush">
+
+
+                                                    <a style="color: white; text-decoration: none" asp-controller="Home" asp-action="Index" asp-route-categoryName="Fashion"><i class="fas fa-tshirt">&nbsp;<span style="font-family:'Times New Roman', Times, serif">FASHION</span></i></a>
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-3 mb-3 mb-md-0">
+                                                <div class="list-group list-group-flush">
+
+
+                                                    <a style="color: white; text-decoration: none" asp-controller="Home" asp-action="Index" asp-route-categoryName="Travel"><i class="fas fa-plane">&nbsp;<span style="font-family:'Times New Roman', Times, serif">TRAVEL</span></i></a>
+
+
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-lg-3">
+                                                <div class="list-group list-group-flush">
+                                                    <a style="color: white; text-decoration: none" asp-controller="Home" asp-action="Index" asp-route-categoryName="SCIENCE"><i class="fas fa-flask">&nbsp;<span style="font-family:'Times New Roman', Times, serif">SCIENCE</span></i></a>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <form asp-action="SearchArticles" asp-controller="Article" class="d-flex ms-5">
+                            <button class="btn" style="box-shadow: none;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseWidthExample" aria-expanded="false" aria-controls="collapseWidthExample">
+                                <i class="fa-solid fa-magnifying-glass" style="color: white;"></i>
+                            </button>
+                            <div class="collapse collapse-horizontal" id="collapseWidthExample">
+
+                                <div class="d-flex">
+                                    <input placeholder="search..." name="search" type="text" class="form-control me-2" style="width: 200px" />
+                                    <button class="btn btn-outline-warning" style="box-shadow: none;display:inline" type="submit">Search</button>
+
+                                </div>
+                                
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+            </nav>
+        </div>
+
+
+        <!--////////////////// -->
+
+    </header>
+    <div class="container flex-grow-1">
+        @RenderBody()
+    </div>
+    <br />
+
+
+
+    <footer style="background-color: black">
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-4">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </div>
+
+                <div class="col-4" style="text-align: center">
+                    <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="About">About Us</a>
+                </div>
+
+                <div class="col-4 text-light" style="text-align: center">
+                    <h6 style="text-align: center; display: inline-block">Follow Us&nbsp&nbsp&nbsp&nbsp<br /></h6>
+                    <a class="fs-3 text-decoration-none" style="color: white" href="https://instagram.com">
+                        <i class="fa fa-instagram" style="font-size:20px"></i>&nbsp
+                    </a>
+                    <a class="fs-3 text-decoration-none" style="color: white" href="https://twitter.com">
+                        <i class="fa fa-twitter" style="font-size:20px"></i>&nbsp
+                    </a>
+                    <a class="fs-3 text-decoration-none" style="color: white" href="https://youtube.com">
+                        <i class="fa fa-youtube" style="font-size:20px"></i>&nbsp
+                    </a>
+                    <a class="fs-3 text-decoration-none" style="color: white" href="https://facebook.com">
+                        <i class="fa fa-facebook" style="font-size:20px"></i>&nbsp
+                    </a>
+                    <a class="fs-3 text-decoration-none" style="color: white" href="https://linkedin.com">
+                        <i class="fa-brands fa-linkedin" style="font-size:20px"></i>&nbsp
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="nav-link text-light" style="text-align: center">
+            &copy; 2022 - newsfive.azurewebsites.net
+        </div>
+    </footer>
+
+
+
+    <script src="https://kit.fontawesome.com/84f924f5fc.js" crossorigin="anonymous"></script>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+
+            if ("@weatherData.Summary" == "clear sky") {
+            document.getElementById('wicon').src = "/Image/weather/sun.png";
+            }
+            else if ("@weatherData.Summary" == "light intensity shower rain") {
+                document.getElementById('wicon').src = "/Image/weather/rainy-day.png";
+            }
+            else if ("@weatherData.Summary" == "moderate rain") {
+                document.getElementById('wicon').src = "/Image/weather/rainy-day.png";
+            }
+            else if ("@weatherData.Summary" == "overcast clouds") {
+                document.getElementById('wicon').src = "/Image/weather/cloudy.png";
+            }
+            else if ("@weatherData.Summary" == "light rain") {
+                document.getElementById('wicon').src = "/Image/weather/cloudy.png";
+            }
+            else if ("@weatherData.Summary" == "mist") {
+                document.getElementById('wicon').src = "/Image/weather/cloudy.png";
+            }
+            else if ("@weatherData.Summary" == "broken clouds") {
+                document.getElementById('wicon').src = "/Image/weather/cloudy.png";
+            }
+            else if ("@weatherData.Summary" == "scattered clouds") {
+                document.getElementById('wicon').src = "/Image/weather/cloudy.png";
+            }
+             else if ("@weatherData.Summary" == "fog") {
+                document.getElementById('wicon').src = "/Image/weather/fog.png";
+            }
+             else if ("@weatherData.Summary" == "few clouds") {
+                document.getElementById('wicon').src = "/Image/weather/few-clouds.png";
+            }
+            else if ("@weatherData.Summary" == "drizzle") {
+                document.getElementById('wicon').src = "/Image/weather/drizzle.webp";
+            }
+            else if ("@weatherData.Summary" == "light intensity drizzle") {
+                document.getElementById('wicon').src = "/Image/weather/drizzle.webp";
+            }
+            else if ("@weatherData.Summary" == "snow") {
+                document.getElementById('wicon').src = "/Image/weather/13.svg";
+            }
+            else if ("@weatherData.Summary" == "light snow") {
+                document.getElementById('wicon').src = "/Image/weather/13.svg";
+            }
+            else if ("@weatherData.Summary" == "heavy snow") {
+                document.getElementById('wicon').src = "/Image/weather/13.svg";
+            }
+            else {
+
+                document.getElementById('wicon').src = "/Image/weather/under_construction.png";
+            }
+            
+            $('[data-bs-toggle="popover"]').popover({
+               
+                sanitize: false,
+                trigger: 'hover',
+                html: true,
+                content:
+                    `<div class="flex-container" style="font-size: 18px;">
+                          <div class="flex-child">
+                                    <p style="margin-bottom:5px;font-size: 18px;">City:</p>
+                            <p style="margin-bottom:5px">Summary:</p>
+                            <p style="margin-bottom:5px">Temperature:&nbsp&nbsp</p>
+                            <p style="margin-bottom:5px">Windspeed:</p>
+                            <p style="margin-bottom:5px">Humidity:</p>
+                          </div>
+                          <div class="flex-child">
+                                    <p style="margin-bottom:5px">@weatherData.City</p>
+                                    <p style="margin-bottom:5px">@weatherData.Summary</p>
+                                    <p style="margin-bottom:5px">@weatherData.TemperatureC &#8451</p>
+                                    <p style="margin-bottom:5px">@weatherData.WindSpeed m/s</p>
+                                    <p style="margin-bottom:5px">@weatherData.Humidity %</p>
+                          </div>
+                     </div>`
+            });
+
+        });
+
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+
+
+
+</body>
+</html>

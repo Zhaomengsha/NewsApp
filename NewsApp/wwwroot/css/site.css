@@ -1,0 +1,193 @@
+html {
+    font-size: 14px;
+   /* text-align: justify;*/
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.like-button {
+    float: left;
+    padding: 1em;
+    border: 1px solid grey;
+    border-radius: 0.5em;
+    font-weight: bold;
+}
+
+.button-container {
+    display: inline-block;
+    margin: 0 10px;
+}
+
+.opinion-wrapper {
+    padding: 1em;
+    background-color: #ecebeb;
+    margin-bottom: 2em;
+    margin-top: 1rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.like-text {
+    float: left;
+    margin: 0.7em 2em 0.7em 1em;
+    font-size: 18px;
+}
+
+.comment-form-comment {
+    font-size: 18px;
+    position: relative;
+}
+
+.comment {
+    display: block;
+    width: 70%;
+    margin-right: 0;
+    font-size: 1.3em;
+    padding: 0.5em 2em 0.5em 0.5em;
+    border-radius: 5px;
+    resize: none;
+    overflow: auto;
+}
+
+.nav {
+    background: #fff;
+    box-shadow: 0 0 15px 0 rgba(0,0,0,10)
+}
+
+.nav-ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    position: relative;
+}
+
+.nav-li {
+    display: inline-block;
+    margin-left: 50px;
+    padding: 3px;
+    position: relative;
+}
+
+.navbar-dark .navbar-nav .nav-link.nav-a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+.nav-a:hover {
+    color: #000;
+}
+
+.nav-a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    width: 100%;
+    background-color: #000;
+    position: absolute;
+    top: -8px;
+    width: 0%;
+    transition: all ease-in-out 250ms;
+}
+
+#navbarDropdown::before {
+    top: -11px;
+}
+
+.nav-a:hover::before {
+    width: 100%;
+}
+
+.menu-sub {
+    position: absolute
+}
+
+.content-style {
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.title-style {
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Times New Roman', Times, serif
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+}
+
+/*Weather App*/
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    white-space: nowrap;
+}
+
+    .flex-child:first-child {
+        font-weight: bold;
+    }
+
+
+a:hover, a:active {
+    color: red;
+}
+
+
+.zoom {
+
+    overflow: hidden;
+    /*margin: 0 auto;*/
+}
+
+    .zoom img {
+        width: 100%;
+        transition: 0.5s all ease-in-out;
+    }
+
+    .zoom:hover img {
+        transform: scale(1.5);
+        /*box-shadow: 2px 2px;*/
+
+    }
+
+.card {
+    background-color: #ecebeb;
+}
+
+.card-header {
+    background-color: darkred;
+}
+

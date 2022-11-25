@@ -1,0 +1,45 @@
+﻿@model IEnumerable<NewsApp.Models.UserCategoryVM>
+
+<h2>Which news are you interested in?
+(Only available if you have an active subscription)<br />
+Select categories(up to 5) you want news from:</h2><br />
+@{
+    if (ViewBag.Message == 6)
+    {
+        <br />
+        <h4 style="color:red"><i>Please don't select more than five categories</i></h4>   
+    }
+}
+
+<head>
+    <meta name="viewport" content="width=device-width"/>
+    
+</head>
+<body>
+    <form asp-controller="Subscription" asp-action="SelectCategories" method="post">
+        <table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @if(string.IsNullOrEmpty(item.UserCategoryId)){
+                           <input type="checkbox" name="categoriesId" value="@item.Id"/>
+
+                        }
+                        else{
+                        <input type="checkbox" name="categoriesId" value="@item.Id" checked/>
+                        }
+                        
+                    </td>
+                    <td>
+                        <label asp-for="@item.CategoryName" >@item.CategoryName</label>
+                    </td>
+                </tr>
+            }
+        </table>
+        <br/>
+        
+        <input class="btn btn-success" type="submit" value="Submit" />
+        
+    </form>
+</body>

@@ -1,0 +1,49 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-NewsApp-63E2E671-0947-4DC4-B763-E8F2B1E7ECF7</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="bin\**" />
+    <Content Remove="bin\**" />
+    <EmbeddedResource Remove="bin\**" />
+    <None Remove="bin\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\Image\Article-Images\3500.webp" />
+    <None Include="wwwroot\Image\Article-Images\b70e2866b40d4d715806fdeb2a43e55a4d2433ff-3287x2266.webp" />
+    <None Include="wwwroot\Image\Article-Images\emmy-award.webp" />
+    <None Include="wwwroot\Image\Article-Images\Hacienda_Yaxcopoil_4x3.webp" />
+    <None Include="wwwroot\Image\Article-Images\Halle_Bailey-Julia_Marino.webp" />
+    <None Include="wwwroot\Image\Article-Images\img_1885.webp" />
+    <None Include="wwwroot\Image\Article-Images\iphone_14.webp" />
+    <None Include="wwwroot\Image\Article-Images\lorem-ipsum-dolor.webp" />
+    <None Include="wwwroot\Image\Article-Images\madonna.webp" />
+    <None Include="wwwroot\Image\Article-Images\nickwagner-development-house.webp" />
+    <None Include="wwwroot\Image\Article-Images\party.webp" />
+    <None Include="wwwroot\Image\weather\drizzle.webp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Azure.Storage.Blobs" Version="12.14.1" />
+    <PackageReference Include="Azure.Storage.Common" Version="12.13.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Proxies" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.10" />
+    <PackageReference Include="WindowsAzure.Storage" Version="9.3.3" />
+    <PackageReference Include="X.PagedList.Mvc.Core" Version="8.4.3" />
+  </ItemGroup>
+
+</Project>

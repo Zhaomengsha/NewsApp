@@ -1,0 +1,101 @@
+﻿@model NewsApp.Models.SubscriptionType
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Join Now!</h1>
+
+
+<hr /><br />
+<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <h5 class="card-header">Basic</h5>
+      <div class="card-body">
+        <p class="card-text"> 
+            <ul>
+                <li>Unlimited access to News5. </li>
+                <li>News5 mobile app. </li>
+                <li>You can cancel anytime. </li>
+            </ul>
+         </p> 
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6">
+    <div class="card">
+      <h5 class="card-header">Premium</h5>
+      <div class="card-body">
+        <p class="card-text">
+            <ul>
+                <li>70% fewer adverts. </li>
+                <li>Available offline. </li>
+                <li>You can cancel anytime. </li>
+            </ul>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateUserSubscription">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="TypeName" class="control-label">Choose a plan that suits you:</label>
+                <select class="form-control" name="subId" asp-items="@ViewBag.SubType">
+                    <option disabled selected>Select a Subscription</option>
+                </select>
+            </div>
+            
+            
+            @*<div class="form-group">
+                <label asp-for="Expires" class="control-label"></label>
+                <input asp-for="Expires" class="form-control" />
+                <span asp-validation-for="Expires" class="text-danger"></span>
+            </div>*@
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+    <!-- Your checkout page html -->
+    
+    <!-- More of your checkout page html -->
+<script>
+
+    getSnippet('Klarna_Order.cshtml').then(function renderSnippet(htmlSnippet) {
+  var checkoutContainer = document.getElementById('my-checkout-container')
+  checkoutContainer.innerHTML = htmlSnippet
+  var scriptsTags = checkoutContainer.getElementsByTagName('script')
+  // This is necessary otherwise the scripts tags are not going to be evaluated
+  for (var i = 0; i < scriptsTags.length; i++) {
+      var parentNode = scriptsTags[i].parentNode
+      var newScriptTag = document.createElement('script')
+      newScriptTag.type = 'text/javascript'
+      newScriptTag.text = scriptsTags[i].text
+      parentNode.removeChild(scriptsTags[i])
+      parentNode.appendChild(newScriptTag)
+  }
+}).catch(renderError)
+</script>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
